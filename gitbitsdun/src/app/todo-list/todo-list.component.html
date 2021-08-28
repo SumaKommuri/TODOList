@@ -1,12 +1,21 @@
+<h4 class="mb-3 text-center"> List of TODO's for today  <a [routerLink]="'/detail'" class="pl-5" style="font-size: 14px">Add Todo</a></h4>
 
-<div>
-<p>Here are the list of todos.</p>
-<a [routerLink]="'/detail'">Add Todo</a>
-  <ol *ngFor="let todoItem of todoList; let i = index">
-    <li [style.background-color]="(randomSelection==i ? 'yellow' : null)">{{todoItem.description}} - {{todoItem.priority}}</li>
-    <div *ngIf="todoItem.timer">You have {{formatTime(todoItem.timer)}} minutes to finish</div>
-    <a [routerLink]="['/detail', todoItem.id]">edit</a>
-  </ol>
+<div class="d-flex flex-column align-items-center">
+  <div class="card mb-2" *ngFor="let todoItem of todoList; let i = index">
+    <div class="card-body" [ngClass]="{'bg-warning' : randomSelection==i} ">
+      <div class="d-flex justify-content-between">
+        Priority :  {{todoItem.priority |titlecase}}
+        <button class="btn btn-sm btn-link" [routerLink]="['/detail', todoItem.id]">Edit</button>
+      </div>
+      <div class="mt-2">
+        {{todoItem.description}}
+      </div>
+    </div>
+    <div class="card-footer text-center" *ngIf="todoItem.timer">
+      You have <h4>{{formatTime(todoItem.timer)}}</h4> minutes to finish this TODO
+    </div>
+  </div>
+
+  <button *ngIf="todoList.length >= 5" class="btn btn-sm btn-primary" (click)="selectARandomTodo()">git bits dun</button>
 </div>
-<button *ngIf="todoList.length >= 5" (click)="selectARandomTodo()">git bits dun</button>
 

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../todo.service";
 import {Todo} from "../model/todo.model";
-import {Subscription, timer} from "rxjs";
+import {timer} from "rxjs";
 
 @Component({
   selector: 'app-todo-list',
@@ -18,7 +18,6 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.todoService.getTodoList().subscribe(data => {
       this.todoList = data;
-      console.log(this.todoList);
     })
   }
 
