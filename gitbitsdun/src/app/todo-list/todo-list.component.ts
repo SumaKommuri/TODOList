@@ -10,6 +10,7 @@ import {Todo} from "../model/todo.model";
 export class TodoListComponent implements OnInit {
 
   todoList: Todo[] = [];
+  showDetailView: boolean = false;
 
   constructor(private todoService: TodoService) { }
 
@@ -19,5 +20,7 @@ export class TodoListComponent implements OnInit {
       console.log(this.todoList);
     })
   }
+
+
 
 }
