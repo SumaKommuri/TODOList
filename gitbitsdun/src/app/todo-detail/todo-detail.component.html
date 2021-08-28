@@ -1,4 +1,6 @@
 <p>Add Todo</p>
 <input type="text" placeholder="Description" [(ngModel)]="description">
-<input type="text" placeholder="Priority" [(ngModel)]="priority">
+<select [(ngModel)]="priority">
+  <option [ngValue]="priorityItem" *ngFor="let priorityItem of priorityList">{{priorityItem | titlecase }}</option>
+</select>
 <button (click)="add()">Add</button>

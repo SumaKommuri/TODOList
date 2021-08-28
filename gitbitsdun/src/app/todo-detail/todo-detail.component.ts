@@ -12,6 +12,7 @@ export class TodoDetailComponent implements OnInit {
 
   description: string = "";
   priority: string = "";
+  priorityList: string[] = ["high", "medium", "low"];
 
   constructor(private todoService: TodoService, private router: Router) { }
 
