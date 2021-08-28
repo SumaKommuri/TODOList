@@ -21,4 +21,11 @@ export class TodoService {
     return this.httpClient.post(this.baseUrl, todo);
   }
 
+  updateTodo(todo: Todo): Observable<any>{
+    return this.httpClient.put(this.baseUrl +`/${todo.id}`, todo);
+  }
+
+  findTodo(id: string): Observable<Todo>{
+    return this.httpClient.get<Todo>(this.baseUrl +`/${id}`);
+  }
 }

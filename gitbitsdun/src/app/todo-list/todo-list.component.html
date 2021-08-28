@@ -4,6 +4,7 @@
 <a [routerLink]="'/detail'">Add Todo</a>
   <ol *ngFor="let todoItem of todoList">
     <li>{{todoItem.description}} - {{todoItem.priority}}</li>
+    <a [routerLink]="['/detail', todoItem.id]">edit</a>
   </ol>
 </div>
 

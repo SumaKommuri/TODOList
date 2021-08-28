@@ -8,5 +8,9 @@ module.exports = app => {
 
     router.get("/", todos.findAll);
 
+    router.put("/:id",todos.update);
+
+    router.get("/:id", todos.findOne);
+
     app.use('/api/todos', router);
 }

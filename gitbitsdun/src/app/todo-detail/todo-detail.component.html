@@ -1,6 +1,9 @@
-<p>Add Todo</p>
-<input type="text" placeholder="Description" [(ngModel)]="description">
+<p *ngIf="!id">Add Todo</p>
+<p *ngIf="id">Edit Todo</p>
+<input [disabled]="!!id" type="text" placeholder="Description" [(ngModel)]="description">
 <select [(ngModel)]="priority">
   <option [ngValue]="priorityItem" *ngFor="let priorityItem of priorityList">{{priorityItem | titlecase }}</option>
 </select>
-<button (click)="add()">Add</button>
+<button *ngIf="!id" (click)="add()">Add</button>
+<button *ngIf="id" (click)="update()">Update</button>
+
