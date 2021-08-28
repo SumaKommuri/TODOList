@@ -2,9 +2,11 @@
 <div>
 <p>Here are the list of todos.</p>
 <a [routerLink]="'/detail'">Add Todo</a>
-  <ol *ngFor="let todoItem of todoList">
-    <li>{{todoItem.description}} - {{todoItem.priority}}</li>
+  <ol *ngFor="let todoItem of todoList; let i = index">
+    <li [style.background-color]="(randomSelection==i ? 'yellow' : null)">{{todoItem.description}} - {{todoItem.priority}}</li>
+    <div *ngIf="todoItem.timer">You have {{formatTime(todoItem.timer)}} minutes to finish</div>
     <a [routerLink]="['/detail', todoItem.id]">edit</a>
   </ol>
 </div>
+<button *ngIf="todoList.length >= 5" (click)="selectARandomTodo()">git bits dun</button>
 
